@@ -3,7 +3,7 @@ import TextInput from '../TextInput/TextInput';
 import styles from './PickCity.module.scss';
 import { useState } from 'react';
 
-const PickCity = (action) => {
+const PickCity = ({action}) => {
   const [city, setCity] = useState('');
 
 
