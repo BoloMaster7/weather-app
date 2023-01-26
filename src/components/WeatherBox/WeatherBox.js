@@ -12,8 +12,11 @@ const WeatherBox = props => {
     console.log(city)
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=19e6c4cc18b8bf97df00d626957ca779&units=metric`)
-    .then(res => res.json())
-    .then(data => {
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+          .then(data => {
+
       const weatherData = {
           city: data.name,
           temp: data.main.temp,
@@ -23,8 +26,12 @@ const WeatherBox = props => {
         setWeatherData(weatherData);
         setPending(false)
     });
-    }
-  ); 
+  } else {
+    alert('ERROR!')
+      }
+    })
+  }); 
+
 
   return (
     <section>
